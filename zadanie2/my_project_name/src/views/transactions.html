@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Po zadanie 2.</title>
+        <style>
+        button {
+            margin-left: 10px;
+            margin-top: 10px;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div>
+        <nav>
+        <ul>
+            <li><a href="/products">Products</a></li>
+            <li><a href="/categories">Categories</a></li>
+            <li><a href="/transactions">Transaction</a></li>
+        </ul>
+    </nav>
+                <h1>Transactions</h1>
+                <form id="transactionForm">
+                    <label for="product">Product:</label>
+                    <select id="product" name="product" required>
+                    </select>
+                    <br>
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" id="quantity" name="quantity" required>
+                    <br>
+                    <button type="submit">Add Transaction</button>
+                </form>
+                <div id="transactionListContainer">
+                    <h2>Transaction List</h2>
+                    <ul id="transactionList">
+                    </ul>
+                </div>
+                <script>
+                    let products = [];
+                    let transactions = [];
+
+                    async function fetchProducts() {
+                        const url = `${window.location.origin}/api/products`;
+                        try {
+                            console.log("start fetching products");
+                            const response = await fetch(url, { method: 'GET' });
+                            if (!response.ok) {
+                                throw new Error(`HTTP error! status: ${response.status}`);
+                            }
+                            products = await response.json();
+                            const productSelect = document.getElementById('product');
+                            products.forEach(product => {
+                                const option = document.createElement('option');
+                                option.value = product.id;
+                                option.textContent = product.name;
+                                productSelect.appendChild(option);
+                            });
+                            console.log("end fetching products");
+                        } catch (error) {
+                            console.error('Error fetching products:', error);
+                        }
+                    }
+
+                    async function fetchTransactions() {
+                        const url = `${window.location.origin}/api/transactions`;
+                        try {
+                            console.log("start fetching transactions");
+                            const response = await fetch(url, { method: 'GET' });
+                            if (!response.ok) {
+                                throw new Error(`HTTP error! status: ${response.status}`);
+                            }
+                            transactions = await response.json();
+                            console.log("end fetching transactions");
+                        } catch (error) {
+                            console.error('Error fetching transactions:', error);
+                        }
+                    }
+
+                    function fillTransactions() {
+                        const listContainer = document.getElementById('transactionListContainer');
+                        let transactionList = document.getElementById('transactionList');
+                        if (transactionList) {
+                            transactionList.remove();
+                        }
+                        transactionList = document.createElement('ul');
+                        transactionList.id = 'transactionList';
+
+                        transactions.forEach(transaction => {
+                            const listItem = document.createElement('li');
+
+                            listItem.textContent = `Product: ${transaction.product.name}, Quantity: ${transaction.quantity}`;
+                            const deleteButton = document.createElement('button');
+                            deleteButton.textContent = 'Delete';
+                            deleteButton.addEventListener('click', async () => {
+                                try {
+                                    const response = await fetch(`${window.location.origin}/api/transactions/delete/${transaction.id}`, {
+                                        method: 'DELETE'
+                                    });
+                                    if (!response.ok) {
+                                        throw new Error(`HTTP error! status: ${response.status}`);
+                                    }
+                                    alert('Transaction deleted successfully!');
+                                    listItem.remove();
+                                } catch (error) {
+                                    console.error('Error deleting transaction:', error);
+                                    alert('Failed to delete transaction.');
+                                }
+                            });
+                            listItem.appendChild(deleteButton);
+                            transactionList.appendChild(listItem);
+                        });
+
+                        listContainer.appendChild(transactionList);
+                    }
+
+                    async function loadData() {
+                        await Promise.all([fetchProducts(), fetchTransactions()]);
+                        fillTransactions();
+                    }
+
+                    loadData();
+
+                    document.getElementById('transactionForm').addEventListener('submit', async (event) => {
+                        event.preventDefault();
+
+                        const product = document.getElementById('product').value;
+                        const quantity = document.getElementById('quantity').value;
+
+                        const transactionData = {
+                            product_id: parseInt(product),
+                            quantity: parseInt(quantity)
+                        };
+
+                        try {
+                            const response = await fetch(`${window.location.origin}/api/transactions/add`, {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify(transactionData)
+                            });
+
+                            if (!response.ok) {
+                                throw new Error(`HTTP error! status: ${response.status}`);
+                            }
+
+                            alert('Transaction added successfully!');
+                            document.getElementById('transactionForm').reset();
+                            fetchTransactions();
+                        } catch (error) {
+                            console.error('Error adding transaction:', error);
+                            alert('Failed to add transaction.');
+                        }
+                    });
+                </script>
+    </div>
+</body>
+</html>
