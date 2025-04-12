@@ -5,8 +5,7 @@ Zadanie 2 Symfony + PHP
 :white_check_mark: 3.5 Należy stworzyć skrypty do testów endpointów via curl
 :white_check_mark: 4.0 Należy stworzyć dwa dodatkowe kontrolery wraz z modelami
 :white_check_mark: 4.5 Należy stworzyć widoki do wszystkich kontrolerów
-:x: 5.0 Należy stworzyć widoki do wszystkich kontrolerów
-
+:x: 5.0 Stworzenie panelu administracyjnego z mockowanym logowaniem
 ## Uruchamianie
 
 `./run.sh` uruchamia dockera, a w nim server symfony oraz skrypt w bashu testujący endpointy. Serwer wyłącza się kiedy użytkownik wprowadzi jakikolwiek input.
