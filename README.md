@@ -42,3 +42,25 @@ Kod: [/zadanie3](https://github.com/Ech0n/projektowanie-obiektowe/tree/main/zada
 :white_check_mark: 5.0 Należy rozszerzyć endpoint na więcej niż jedną lokalizację (Pogoda), lub akcje (Giełda) zwracając JSONa  
 
 Kod: [/zadanie4](https://github.com/Ech0n/projektowanie-obiektowe/tree/main/zadanie4)
+
+
+**ZADANIE 5.** React 
+
+:white_check_mark: 3.0 W ramach projektu należy stworzyć dwa komponenty: Uslugi oraz Płatności; Płatności powinny wysyłać do aplikacji serwerowej dane, a w Uslugach powinniśmy pobierać dane o usługach z aplikacji serwerowej  
+:white_check_mark: 3.5 Należy dodać komponent Zamówienia wraz z widokiem; należy wykorzystać routing  
+:white_check_mark: 4.0 Dane pomiędzy wszystkimi komponentami powinny być przesyłane za pomocą React hooks  
+:white_check_mark: 4.5 Należy dodać skrypt uruchamiający aplikację serwerową oraz kliencką na dockerze via docker-compose  
+:white_check_mark: 5.0 Należy wykorzystać axios'a oraz dodać nagłówki pod CORS  
+
+Kod: [ebiznes/react](https://github.com/Ech0n/ebiznes/tree/main/react)
+
+
+**ZADANIE 6.** Sonar
+
+:white_check_mark: 3.0 Należy dodać eslint w hookach gita  
+:white_check_mark: 3.5 Należy wyeliminować wszystkie bugi w kodzie w Sonarze (kod aplikacji klienckiej)  
+:white_check_mark: 4.0 Należy wyeliminować wszystkie zapaszki w kodzie w Sonarze (kod aplikacji klienckiej)  
+:white_check_mark: 4.5 Należy wyeliminować wszystkie podatności oraz błędy bezpieczeństwa w kodzie w Sonarze (kod aplikacji klienckiej)  
+:white_check_mark: 5.0 Zredukować duplikaty kodu do 0%  
+
+Kod: [/EbiznesReactApp](https://github.com/Ech0n/EbiznesReactApp)
