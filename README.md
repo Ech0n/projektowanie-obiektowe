@@ -77,4 +77,4 @@ Kod: [/EbiznesReactApp](https://github.com/Ech0n/EbiznesReactApp)
 
 Kod: [/swift](https://github.com/Ech0n/projektowanie-obiektowe/tree/main/swift)
 
-Uruchamianie: `docker compose up`
+Uruchamianie: `swift run`
