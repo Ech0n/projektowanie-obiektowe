@@ -64,3 +64,17 @@ Kod: [ebiznes/react](https://github.com/Ech0n/ebiznes/tree/main/react)
 :white_check_mark: 5.0 Zredukować duplikaty kodu do 0%  
 
 Kod: [/EbiznesReactApp](https://github.com/Ech0n/EbiznesReactApp)
+
+
+**ZADANIE 7.** Swift
+
+
+:white_check_mark: 3.0 Należy stworzyć kontroler wraz z modele Produktów zgodny z CRUD w ORM Fluent  
+:white_check_mark: 3.5 Należy stworzyć szablony w Leaf  
+:white_check_mark: 4.0 Należy stworzyć drugi model oraz kontroler Kategorii wraz z relacją  
+:x: 4.5 Należy wykorzystać Redis do przechowywania danych  
+:x: 5.0 Wrzucić aplikację na heroku  
+
+Kod: [/swift](https://github.com/Ech0n/projektowanie-obiektowe/tree/main/swift)
+
+Uruchamianie: `docker compose up`

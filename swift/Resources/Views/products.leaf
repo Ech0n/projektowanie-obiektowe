@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Products</title>
+</head>
+<body>
+  <a href="/categories">Go to categories </a>
+  <h1>Products:</h1>
+  #if(products):
+    #for(prod in products):
+    <p>#(prod.name) #(prod.price)$ | kategoria: #(prod.categoryName)</p>
+    #endfor
+  #endif
+  <form id="product-form">
+    <input type="text" name="name" placeholder="Product Name" required>
+    <input type="number" name="price" placeholder="Price" step="0.01" required>
+      <select name="categoryID" required>
+        <option value="" disabled selected>Select Category</option>
+        #if(categories):
+          #for(cat in categories):
+            <option value="#(cat.id)">#(cat.name)</option>
+          #endfor
+        #endif
+      </select>
+    <button type="submit">Add Product</button>
+  </form>
+
+  <script>
+  document.getElementById("product-form").addEventListener("submit", async function (e) {
+    e.preventDefault();
+    const form = e.target;
+
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+    data.price = parseFloat(data.price);
+    
+    const response = await fetch("/products/api", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    });
+
+    if (response.ok) {
+      const product = await response.json();
+      alert("Product created: " + product.name);
+      form.reset();
+      window.location.reload();
+    } else {
+      alert("Something went wrong");
+    }
+  });
+  </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Categirues</title>
+</head>
+<body>
+  <a href="/products">Go to products </a>
+<h1>Categories:</h1>
+      <hr />
+  #if(categories):
+    #for(cat in categories):
+      <p>#(cat.name)</p>
+      <hr/>
+    #endfor
+  #endif
+  <form id="category-form">
+    <input type="text" name="name" placeholder="Category Name" required>
+    <button type="submit">Add Category</button>
+  </form>
+
+  <script>
+  document.getElementById("category-form").addEventListener("submit", async function (e) {
+    e.preventDefault();
+    const form = e.target;
+
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+    
+    const response = await fetch("/categories/api", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    });
+
+    if (response.ok) {
+      const cat = await response.json();
+      alert("Category created: " + cat.name);
+      form.reset();
+      window.location.reload();
+    } else {
+      alert("Something went wrong");
+    }
+  });
+  </script>
+</body>
+</html>
