@@ -50,22 +50,19 @@ import Redis
 
             return productDTOs
         }
-
-        @Sendable
-        func create(req: Request) async throws -> ProductDTO {
-            let dto = try req.content.decode(ProductDTO.self)
+        func saveProduct(dto: ProductDTO, on db: any Database) async throws -> Product {
             let product = dto.toModel()
-            guard
-                let savedProduct = try await Product.query(on: req.db)
-                    .with(\.$category)
-                    .filter(\.$id == product.id!)
-                    .first()
-            else {
-                throw Abort(.internalServerError, reason: "Failed to load product after save")
-            }
-
-            return savedProduct.toDTO()
+            try await product.save(on: db)
+            return product
         }
+        @Sendable
+        func create(req: Request) async throws -> HTTPStatus {
+            let dto = try req.content.decode(ProductDTO.self)
+            let savedProduct = try await saveProduct(dto: dto, on:  req.db)
+            return .created
+        }
+
+
 
         @Sendable
         func get(req: Request) async throws -> ProductDTO {

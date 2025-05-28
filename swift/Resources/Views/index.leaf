@@ -7,6 +7,7 @@
 </head>
 
 <body>
-  <h1>#(title)</h1>
+  <a href="/products">Go to products </a>
+  <a href="/categories">Go to categories </a>
 </body>
 </html>

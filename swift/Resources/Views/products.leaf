@@ -43,9 +43,8 @@
       body: JSON.stringify(data)
     });
 
-    if (response.ok) {
-      const product = await response.json();
-      alert("Product created: " + product.name);
+    if (response.status == 201) {
+      alert("Product created");
       form.reset();
       window.location.reload();
     } else {
