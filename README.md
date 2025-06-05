@@ -78,3 +78,17 @@ Kod: [/EbiznesReactApp](https://github.com/Ech0n/EbiznesReactApp)
 Kod: [/swift](https://github.com/Ech0n/projektowanie-obiektowe/tree/main/swift)
 
 Uruchamianie: `swift run`
+
+**ZADANIE 8.** Python testy
+
+:white_check_mark: 3.0 Należy stworzyć 30 przypadków testowych w Pythonie w WebDriverze  
+:white_check_mark: 3.5 Należy rozszerzyć testy funkcjonalne, aby zawierały minimum 100 asercji  
+:x: 4.0 Należy stworzyć testy jednostkowe do wybranego wcześniejszego projektu z minimum 100 asercjami  
+:x: 4.5 Należy dodać testy API, należy pokryć wszystkie endpointy z minimum jednym scenariuszem negatywnym per endpoint  
+:x: 5.0 Należy uruchomić testy funkcjonalne na Browserstacku na urządzeniu mobilnym
+
+Kod: [/zadanie8](https://github.com/Ech0n/projektowanie-obiektowe/tree/main/zadanie8)
+
+## How to run:
+1. go to app folder and run docker container: `docker buildx build -t <name> .`
+2. install selenium and chrome web driver and run `python ./functionalTests/test_svelte_app.py`
