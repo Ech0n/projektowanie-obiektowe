@@ -25,7 +25,7 @@
     data = null;
 
     try {
-      const res = await fetch('http://0.0.0.0:8000/button');
+      const res = await fetch('http://localhost:8000/button');
       if (!res.ok) throw new Error('Fetch failed');
       data = await res.json();
     } catch (err) {

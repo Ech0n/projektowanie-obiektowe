@@ -6,7 +6,7 @@ from fastapi.staticfiles import StaticFiles
 app = FastAPI()
 
 #for debug
-origins = ["http://localhost:5173"]
+origins = ["http://localhost:8000"]
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
@@ -21,7 +21,6 @@ products = [
     {"id": 3, "name": "Headphones", "price": 199.99}
 ]
 
-app.mount("/", StaticFiles(directory="static"), name="static")
 
 @app.get("/products")
 def get_products():
@@ -30,3 +29,5 @@ def get_products():
 @app.get("/button")
 def get_button_text():
     return "button text"
+
+app.mount("/", StaticFiles(directory="static"), name="static")

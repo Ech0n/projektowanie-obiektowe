@@ -10,7 +10,7 @@
     error = null;
 
     try {
-      const res = await fetch('http://0.0.0.0:8000/products');
+      const res = await fetch('http://localhost:8000/products');
       if (!res.ok) throw new Error(`Error: ${res.status} ${res.statusText}`);
       products = await res.json();
     } catch (err) {
