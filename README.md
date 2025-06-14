@@ -95,3 +95,13 @@ Kod: [/zadanie8](https://github.com/Ech0n/projektowanie-obiektowe/tree/main/zada
 
 
 #### Site available at: (http://localhost:8000/index.html/#)[http://localhost:8000/index.html/#]
+
+**ZADANIE 9.** Android
+
+:white_check_mark: 3.0 stworzyć listę kategorii oraz produktów  
+:white_check_mark: 3.5 dodać widok koszyka  
+:white_check_mark: 4.0 stworzyć bazę w Realmie  
+:x: 4.5 dodać płatności w Stripe  
+:x: 5.0 dodać logowanie i rejestrację via Oauth2
+
+Kod: [/zadanie9](https://github.com/Ech0n/projektowanie-obiektowe/tree/main/zadanie9)
