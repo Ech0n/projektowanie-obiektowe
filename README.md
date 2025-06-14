@@ -105,3 +105,8 @@ Kod: [/zadanie8](https://github.com/Ech0n/projektowanie-obiektowe/tree/main/zada
 :x: 5.0 dodać logowanie i rejestrację via Oauth2
 
 Kod: [/zadanie9](https://github.com/Ech0n/projektowanie-obiektowe/tree/main/zadanie9)
+
+https://github.com/user-attachments/assets/4ec3a390-9cee-4495-95a6-1367d88560fb
+
+
+
